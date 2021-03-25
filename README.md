@@ -58,7 +58,7 @@ Your server setup will depend on which `release-*` template you use, the one wit
 
 - Using your DNS provider, create a subdomain `A` record pointing to your hosted Linux server
 - Remote to your Linux server to install Docker and `docker-compose`.
-- Use `deploy/nginx-proxy-compose.yml` to run nginx-proxy on your Linux server.
+- Use [`deploy/nginx-proxy-compose.yml`](https://github.com/NetCoreApps/Chinook/blob/main/deploy/nginx-proxy-compose.yml) to run nginx-proxy on your Linux server.
 
 See our full `x mix` GitHub Action Tutorials in the ServiceStack docs.
 
