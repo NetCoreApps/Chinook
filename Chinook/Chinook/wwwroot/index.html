@@ -1,0 +1,91 @@
+<html>
+<head>
+    <title>Chinook</title>
+    <style>
+        body { padding: 1em 1em 0 1em; }
+        body, input[type=text] { font: 32px/36px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif }
+        input { padding:.25em .5em; margin-right:.5em; }
+        a { color: #007bff }
+        #result { display:inline-block;color:#28a745; }
+        pre { background: #f1f1f1; padding: 1em; }
+    </style>
+</head>
+<body>
+
+<h2><a href="/json/metadata?op=Hello">Hello</a> API</h2>
+<input type="text" id="txtName" onkeyup="callHello(this.value)">
+<div id="result"></div>
+
+<script>
+    var exports = { __esModule:true }, module = { exports:exports }
+    function require(name) { return exports[name] || window[name] }
+</script>
+<script src="/js/servicestack-client.js"></script>
+<script src="/dtos.js"></script>
+<script>
+    Object.assign(window, exports); //import
+
+    var client = new JsonServiceClient();
+    function callHello(val) {
+        client.get(new Hello({ name: val }))
+            .then(function(r) {
+                document.getElementById('result').innerHTML = r.result;
+            });
+    }
+
+    callHello(document.querySelector('#txtName').value = 'World')
+</script>
+
+<div style="font-size:20px;line-height:26px">
+    <h3>Using JsonServiceClient in Web Pages</h3>
+
+    <p>
+        Update your App's
+        <a href="https://docs.servicestack.net/typescript-add-servicestack-reference">TypeScript DTOs</a> and
+        compile to JS (requires <a href="https://www.typescriptlang.org/download">TypeScript</a>):
+    </p>
+
+    <pre>$ x scripts dtos</pre>
+
+    <h3>Including @servicestack/client &amp; Typed DTOs</h3>
+
+    <p>
+        Create a basic UMD loader then include the UMD <b>@servicestack/client</b> library and <b>dtos.js</b>:
+    </p>
+
+    <pre>&lt;script&gt;
+  var exports = { __esModule:true }, module = { exports:exports }
+  function require(name) { return exports[name] || window[name] }
+&lt;/script&gt;
+&lt;script src="/js/servicestack-client.js"&gt;&lt;/script&gt;
+&lt;script src="/dtos.js"&gt;&lt;/script&gt;</pre>
+
+    <p>
+        We can then import the library and DTO types in the global namespace to use them directly:
+    </p>
+
+    <pre>Object.assign(window, exports) //import
+
+var client = new JsonServiceClient()
+client.get(new Hello({ name: name }))
+    .then(function(r) {
+        console.log(r.result)
+    })
+</pre>
+
+    <h3>Using @servicestack/client in npm projects</h3>
+    <pre>$ npm install @servicestack/client</pre>
+    <pre>import { JsonServiceClient } from '@servicestack/client'
+
+let client = new JsonServiceClient()
+let response = await client.get(new Hello({ name }))
+</pre>
+
+    <p>
+        Typed DTOs generated using
+        <a href="https://docs.servicestack.net/typescript-add-servicestack-reference">TypeScript Add ServiceStack Reference</a>
+    </p>
+</div>
+
+</body>
+</html>
