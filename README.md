@@ -40,3 +40,25 @@ Drilling down to a single API will show details about each API, including its Ro
 
 ![](https://raw.githubusercontent.com/ServiceStack/docs/master/docs/images/autoquery/chinook-autogen-createtracks.png)
 
+
+### Deployments
+
+The `x mix` tool is used to jump start our deployments via GitHub Actions. You will need a Linux server with the following.
+
+- Using your DNS provider, create a subdomain `A` record pointing to your hosted Linux server
+- Remote to your Linux server to install Docker and `docker-compose`.
+- Use `deploy/nginx-proxy-compose.yml` to run nginx-proxy on your Linux server
+
+Once your server is ready, update your repository.
+
+- In the root of your repository run `x mix build release-ecr-aws` or other release strategy (See `GitHub` tag in `x mix` for details).
+- Create a Dockerfile with `x mix docker-dotnet`.
+- Adjust pathing in `.github/workflows/build.yml` to point to Chinook.sln and Chinook.Tests.
+- Adjust Dockerfile `WORKDIR` to `Chinook` directory that contains the Chinook.sln file.
+- Update your repository secrets based on readme in `.github/workflows/readme.md`
+- Create a release to deploy your application.
+
+See our full `x mix` GitHub Action Tutorials in the ServiceStack docs.
+
+- [Deploying to Digital Ocean Droplet directly via GitHub Actions and SSH](https://docs.servicestack.net/do-github-action-mix-deployment)
+- [GitHub Actions mix template - Deploy to AWS ECS](https://docs.servicestack.net/mix-github-actions-aws-ecs)
