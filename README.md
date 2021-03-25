@@ -53,8 +53,8 @@ Once your server is ready, update your repository.
 
 - In the root of your repository run `x mix build release-ecr-aws` or other release strategy (See `GitHub` tag in `x mix` for details).
 - Create a Dockerfile with `x mix docker-dotnet`.
-- Adjust pathing in `.github/workflows/build.yml` to point to Chinook.sln and Chinook.Tests.
-- Adjust Dockerfile `WORKDIR` to `Chinook` directory that contains the Chinook.sln file.
+- Adjust pathing in [`.github/workflows/build.yml`](https://github.com/NetCoreApps/Chinook/blob/main/.github/workflows/build.yml#L23) to point to Chinook.sln and Chinook.Tests.
+- Adjust [Dockerfile `WORKDIR` to `Chinook` directory that contains the Chinook.sln](https://github.com/NetCoreApps/Chinook/blob/main/Dockerfile#L5) file.
 - Update your repository secrets based on readme in `.github/workflows/readme.md`
 - Create a release to deploy your application.
 
