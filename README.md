@@ -43,20 +43,22 @@ Drilling down to a single API will show details about each API, including its Ro
 
 ### Deployments
 
-The `x mix` tool is used to jump start our deployments via GitHub Actions. You will need a Linux server with the following.
+The `x mix` tool is used to jump start our deployments via GitHub Actions.
 
-- Using your DNS provider, create a subdomain `A` record pointing to your hosted Linux server
-- Remote to your Linux server to install Docker and `docker-compose`.
-- Use `deploy/nginx-proxy-compose.yml` to run nginx-proxy on your Linux server
+Your server setup will depend on which `release-*` template you use, the one with the smallest infrastructure footprint is the `release-ghr-vanilla` that uses GitHub Container Repository to store your Docker images. See our [full tutorial for details on server setup using Digital Ocean](https://docs.servicestack.net/do-github-action-mix-deployment).
 
-Once your server is ready, update your repository.
-
-- In the root of your repository run `x mix build release-ecr-aws` or other release strategy (See `GitHub` tag in `x mix` for details).
+- In the root of your repository run `x mix build release-ghr-vanilla` or other release strategy (See `GitHub` tag in `x mix` for details).
 - Create a Dockerfile with `x mix docker-dotnet`.
 - Adjust pathing in [`.github/workflows/build.yml`](https://github.com/NetCoreApps/Chinook/blob/main/.github/workflows/build.yml#L23) to point to Chinook.sln and Chinook.Tests.
 - Adjust [Dockerfile `WORKDIR` to `Chinook` directory that contains the Chinook.sln](https://github.com/NetCoreApps/Chinook/blob/main/Dockerfile#L5) file.
 - Update your repository secrets based on readme in `.github/workflows/readme.md`
 - Create a release to deploy your application.
+
+ Your hosting setup will be different based on which template you select, 
+
+- Using your DNS provider, create a subdomain `A` record pointing to your hosted Linux server
+- Remote to your Linux server to install Docker and `docker-compose`.
+- Use `deploy/nginx-proxy-compose.yml` to run nginx-proxy on your Linux server.
 
 See our full `x mix` GitHub Action Tutorials in the ServiceStack docs.
 
