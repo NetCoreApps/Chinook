@@ -43,6 +43,15 @@ Drilling down to a single API will show details about each API, including its Ro
 
 ### Deployments
 
+```xml
+  <ItemGroup>
+    <None Remove="chinook.sqlite" />
+    <Content Include="chinook.sqlite">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+```
+
 The `x mix` tool is used to jump start our deployments via GitHub Actions.
 
 Your server setup will depend on which `release-*` template you use, the one with the smallest infrastructure footprint is the `release-ghr-vanilla` that uses GitHub Container Repository to store your Docker images. See our [full tutorial for details on server setup using Digital Ocean](https://docs.servicestack.net/do-github-action-mix-deployment).

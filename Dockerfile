@@ -2,9 +2,9 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /source
 
 COPY . .
-WORKDIR /source/Chinook
 RUN dotnet restore
 
+WORKDIR /source/Chinook
 RUN dotnet publish -c release -o /app --no-restore
 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS runtime

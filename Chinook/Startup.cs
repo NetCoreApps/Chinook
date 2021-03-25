@@ -7,8 +7,6 @@ using Funq;
 using ServiceStack;
 using ServiceStack.Configuration;
 using Chinook.ServiceInterface;
-using ServiceStack.Data;
-using ServiceStack.OrmLite;
 
 namespace Chinook
 {
