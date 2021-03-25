@@ -20,7 +20,7 @@ jobs:
 
       - name: build
         run: dotnet build
-        working-directory: .
+        working-directory: ./Chinook
 
       - name: test
         run: |
@@ -31,5 +31,5 @@ jobs:
             echo TESTS FAILED
             exit 1
           fi
-        working-directory: ./Chinook.Tests
+        working-directory: ./Chinook/Chinook.Tests
 
