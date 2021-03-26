@@ -20,7 +20,7 @@ jobs:
 
       - name: build
         run: dotnet build
-        working-directory: ./
+        working-directory: .
 
       - name: test
         run: |
