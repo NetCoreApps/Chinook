@@ -77,7 +77,11 @@ The rest of the options, leave as default.
 ### Enable floating IP
 Once your Droplet is started, you'll want to `Enable Floating IP` so that we have a static public IP address to route to for a domain/subdomain.
 
-This can be done via `Manage` -> `Droplets` -> `Select your droplet` -> click `Enable Floating IP` at the top right.
+This can be done via 
+- `Manage` 
+- `Droplets`
+- `Select your droplet`
+- click `Enable Floating IP` at the top right.
 
 ![](https://raw.githubusercontent.com/ServiceStack/docs/master/docs/images/mix/digital-ocean-enable-floating-ip.png)
 
@@ -146,7 +150,15 @@ Files provided by the `release-ghr-vanilla` are:
 ### Make sure GitHub `Enable improved container support` is turned on
 The account or organization of your repository at the time of writing needs to "Enable improved container support". 
 
-Goto `Account` -> `Settings` -> `Packages` -> `Improved container support` -> select `Enable improved container support` and save.
+Goto: 
+
+- `Account`
+- `Settings`
+- `Packages`
+- `Improved container support`
+- select `Enable improved container support`
+- Save.
+
 > See [GitHub Docs](https://docs.github.com/en/packages/guides/enabling-improved-container-support) for details. 
 
 ### Create secrets
