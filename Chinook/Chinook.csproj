@@ -18,5 +18,12 @@
     <ProjectReference Include="..\Chinook.ServiceInterface\Chinook.ServiceInterface.csproj" />
     <ProjectReference Include="..\Chinook.ServiceModel\Chinook.ServiceModel.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <None Remove="chinook.sqlite" />
+    <Content Include="chinook.sqlite">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
 </Project>
