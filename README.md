@@ -33,6 +33,8 @@ That's all that's required to generate a AutoQuery and AutoQuery CRUD typed API 
 
     $ dotnet run
 
+### Metadata pages
+
 Navigate to the `/metadata` page to view all AutoQuery APIs for each table in the Chinook DB:
 
 ![](https://raw.githubusercontent.com/ServiceStack/docs/master/docs/images/autoquery/chinook-autogen-metadata.png)
@@ -41,6 +43,30 @@ Navigating to an API will drill down to show more details about each API, includ
 
 ![](https://raw.githubusercontent.com/ServiceStack/docs/master/docs/images/autoquery/chinook-autogen-createtracks.png)
 
+### Querying APIs
+
+With AutoQuery & CRUD APIs generated for each of Chinook's RDBMS tables we can now start querying fields on each table
+with any of the built-in [Implicit Querying Conventions](https://docs.servicestack.net/autoquery-rdbms#implicit-conventions), 
+e.g. We can view all artists starting `F%` within the first 100 registered artists with:
+
+ - https://localhost:5001/artists?ArtistId%3C=100&NameStartsWith=F
+
+![](https://raw.githubusercontent.com/ServiceStack/docs/master/docs/images/autoquery/chinook-autoquery-artists2.png)
+
+All the standard querying functions are available, e.g. Sorting for [Multiple OrderBy's](https://docs.servicestack.net/autoquery-rdbms#multiple-orderbys),
+Page through query results with [Skip and Take](https://docs.servicestack.net/autoquery-rdbms#paging-and-ordering),
+selecting [Custom Fields](https://docs.servicestack.net/autoquery-rdbms#custom-fields) & applying [custom JSON transformations](https://docs.servicestack.net/customize-json-responses), e.g:
+
+ - https://localhost:5001/tracks?NameContains=Heart&OrderBy=Name&Skip=5&Take=10&fields=TrackId,Name,Milliseconds&jsconfig=ExcludeDefaultValues
+
+![](https://raw.githubusercontent.com/ServiceStack/docs/master/docs/images/autoquery/chinook-autoquery-tracks.png)
+
+All APIs support standard [HTTP Content Negotiation](https://docs.servicestack.net/routing#content-negotiation) options, e.g. 
+you can request the response in JSON my appending the route with a `.json` format specifier: 
+
+- https://localhost:5001/tracks.json?NameContains=Heart&OrderBy=Name&Skip=5&Take=10&fields=TrackId,Name,Milliseconds&jsconfig=ExcludeDefaultValues
+
+![](https://raw.githubusercontent.com/ServiceStack/docs/master/docs/images/autoquery/chinook-autoquery-tracks-json.png)
 
 ## Deployments
 
@@ -150,24 +176,26 @@ Now our droplet server is all setup to host our docker apps lets configure a dom
 
 </details>
 
+## Mix in preferred GitHub Actions Deployment workflow
 
-<details>
-  <summary>Setup GitHub Repository</summary>
+After the deployment server is configured, we can mix in the desired GitHub Actions to enable CI for our App 
+that build and run its tests on every check-in and packages and deploys the App on each GitHub release.
 
-After our server is configured, lets setup GitHub Actions to perform the deployments of our App which we can easily enable 
-on ServiceStack projects using [x mix](https://docs.servicestack.net/mix-tool) to download pre-configured GitHub Actions.
-
-In our project's root directory, we want to mix in both `build` and `release-ghr-vanilla` actions:
+We can easily do this on ServiceStack projects, in their root directory by mixing in the `build` and `release-ghr-vanilla` actions:
 
     $ x mix build release-ghr-vanilla
 
 `build` adds the `build.yml` GitHub Action that **builds** our project and runs its **tests**.
 
-`release-ghr-vanilla` adds the GitHub Actions below to use Docker to package the application, pushes the resulting Docker image to GitHub Container Registry (ghcr.io) and deploys the application via SSH + `docker-compose` to our new Droplet:
+`release-ghr-vanilla` adds the GitHub Actions below to use Docker to package the application, pushes the resulting Docker image to GitHub Container Registry 
+([ghcr.io](https://ghcr.io/)) and deploys the application via SSH + `docker-compose` to our new Droplet:
 
 - **.github/workflows/release.yml** - Release GitHub Action Workflow
 - **deploy/docker-compose-template.yml** - Templated docker-compose file used by the application
 - **deploy/nginx-proxy-compose.yml** - File provided to get nginx reserve proxy setup as used by steps above.
+
+<details>
+  <summary>Setup GitHub Repository</summary>
 
 ### Enable Enable improved container support
 

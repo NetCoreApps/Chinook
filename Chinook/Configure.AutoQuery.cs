@@ -8,6 +8,7 @@ namespace Chinook
         {
             appHost.Plugins.Add(new AutoQueryFeature {
                 MaxLimit = 1000,
+                IncludeTotal = true,
                 GenerateCrudServices = new GenerateCrudServices {
                     AutoRegister = true
                 }
