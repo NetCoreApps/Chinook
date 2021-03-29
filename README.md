@@ -49,7 +49,7 @@ With AutoQuery & CRUD APIs generated for each of Chinook's RDBMS tables we can n
 with any of the built-in [Implicit Querying Conventions](https://docs.servicestack.net/autoquery-rdbms#implicit-conventions), 
 e.g. We can view all artists starting `F%` within the first 100 registered artists with:
 
- - https://localhost:5001/artists?ArtistId%3C=100&NameStartsWith=F
+https://localhost:5001/artists?ArtistId%3C=100&NameStartsWith=F
 
 ![](https://raw.githubusercontent.com/ServiceStack/docs/master/docs/images/autoquery/chinook-autoquery-artists2.png)
 
@@ -57,14 +57,14 @@ All the standard querying functions are available, e.g. Sorting for [Multiple Or
 Page through query results with [Skip and Take](https://docs.servicestack.net/autoquery-rdbms#paging-and-ordering),
 selecting [Custom Fields](https://docs.servicestack.net/autoquery-rdbms#custom-fields) & applying [custom JSON transformations](https://docs.servicestack.net/customize-json-responses), e.g:
 
- - https://localhost:5001/tracks?NameContains=Heart&OrderBy=Name&Skip=5&Take=10&fields=TrackId,Name,Milliseconds&jsconfig=ExcludeDefaultValues
+https://localhost:5001/tracks?NameContains=Heart&OrderBy=Name&Skip=5&Take=10&fields=TrackId,Name,Milliseconds&jsconfig=ExcludeDefaultValues
 
 ![](https://raw.githubusercontent.com/ServiceStack/docs/master/docs/images/autoquery/chinook-autoquery-tracks.png)
 
 All APIs support standard [HTTP Content Negotiation](https://docs.servicestack.net/routing#content-negotiation) options, e.g. 
 you can request the response in JSON my appending the route with a `.json` format specifier: 
 
-- https://localhost:5001/tracks.json?NameContains=Heart&OrderBy=Name&Skip=5&Take=10&fields=TrackId,Name,Milliseconds&jsconfig=ExcludeDefaultValues
+https://localhost:5001/tracks.json?NameContains=Heart&OrderBy=Name&Skip=5&Take=10&fields=TrackId,Name,Milliseconds&jsconfig=ExcludeDefaultValues
 
 ![](https://raw.githubusercontent.com/ServiceStack/docs/master/docs/images/autoquery/chinook-autoquery-tracks-json.png)
 
