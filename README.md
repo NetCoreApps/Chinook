@@ -68,6 +68,39 @@ https://localhost:5001/tracks.json?NameContains=Heart&OrderBy=Name&Skip=5&Take=1
 
 ![](https://raw.githubusercontent.com/ServiceStack/docs/master/docs/images/autoquery/chinook-autoquery-tracks-json.png)
 
+## Convert to typed ServiceStack Services
+
+ServiceStack's [AutoGen feature](https://docs.servicestack.net/autogen) creates typed ServiceStack Services in memory
+based on your RDBMS Schema on each Startup, which are indistinguishable from hand-crafted Services that can take 
+advantage of ecosystem of features around ServiceStack Services like 
+[Add ServiceStack Reference](https://docs.servicestack.net/add-servicestack-reference) for generating rich, typed APIs
+around popular Web, Mobile and Desktop programming languages.
+
+The disadvantage of autogen Services is that they only exist as generated Types at runtime limiting their ability to 
+be easily enhanced further. When further customization is required the AutoGen Types can be synthesized into Typed
+C# DTOs by generating them in your ServiceModel project with:
+
+    $ cd Chinook.ServiceModel
+    $ x csharp https://localhost:5001 -path /crud/all/csharp
+
+Which generates the C# Models and APIs that would otherwise have been generated at Startup, which since they exist in 
+source code no longer need to be generated, which can now be disabled by removing AutoGen's `AutoRegister` directive:
+
+```csharp
+appHost.Plugins.Add(new AutoQueryFeature {
+    MaxLimit = 1000,
+    IncludeTotal = true,
+    // GenerateCrudServices = new GenerateCrudServices {
+    //     AutoRegister = true
+    // }
+});
+```
+
+When generating the types there's also an opportunity to customize the 
+[code generation with App conventions](https://docs.servicestack.net/autogen#customize-code-generation-to-include-app-conventions) 
+should additional validation & authorization need to be applied, e.g. for write operations or selected tables.
+
+
 ## Deployments
 
 ### Include chinook.sqlite
