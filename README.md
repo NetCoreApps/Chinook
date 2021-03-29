@@ -197,6 +197,8 @@ We can easily do this on ServiceStack projects, in their root directory by mixin
 <details>
   <summary>Setup GitHub Repository</summary>
 
+To integrate the GitHub Actions with our deployment environment we'll need enable improved container support and configure required deployment variables.
+
 ### Enable Enable improved container support
 
 The account or organization of your repository at the time of writing needs to [Enable improved container support](https://docs.github.com/en/packages/guides/enabling-improved-container-support):
@@ -206,7 +208,7 @@ The account or organization of your repository at the time of writing needs to [
 
 ### Create Deployment Secrets
 
-The `x mix` templates needs 6 pieces of information to perform the deployment.
+The `release-ghr-vanilla` mix template needs 6 pieces of information to perform the deployment.
 
 - `CR_PAT` - GitHub Personal Token with read/write access to packages
 - `DEPLOY_HOST` - Hostname to SSH to, should be a domain or subdomain with `A` record pointing to server's IP
@@ -217,10 +219,12 @@ The `x mix` templates needs 6 pieces of information to perform the deployment.
 
 `CR_PAT` and `DEPLOY_KEY` should be treated as highly confidential, but for the rest, we used the following values.
 
-- `DEPLOY_HOST`: chinook.netcore.io
-- `DEPLOY_PORT`: 22
-- `DEPLOY_USERNAME`: root
-- `LETSENCRYPT_EMAIL`: team@servicestack.net
+Secrets can be added using either the [GitHub CLI](https://cli.github.com) or GitHub UI to add [repository secrets](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) used by the GitHub Actions, e.g:
+
+    $ gh secret set DEPLOY_HOST       -b"chinook.netcore.io"
+    $ gh secret set DEPLOY_PORT       -b"22"
+    $ gh secret set DEPLOY_USERNAME   -b"root"
+    $ gh secret set LETSENCRYPT_EMAIL -b"team@servicestack.net"
 
 </details>
 
