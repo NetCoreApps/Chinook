@@ -223,7 +223,7 @@ To deploy the embedded `chinook.sqlite` with our App, set its File Properties to
 
 ![](https://raw.githubusercontent.com/ServiceStack/docs/master/docs/images/autoquery/chinook.sqlite-properties.png)
 
-Or manually by adding the following to the `Chinook.csproj`.
+Or manually by adding the following to the `Chinook.csproj`
 
 ```xml
 <ItemGroup>
