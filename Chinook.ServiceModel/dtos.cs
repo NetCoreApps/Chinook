@@ -378,6 +378,8 @@ namespace Chinook.ServiceModel
         : QueryDb<Artists>, IReturn<QueryResponse<Artists>>, IGet
     {
         public long? ArtistId { get; set; }
+        public long[] ArtistIdBetween { get; set; }
+        public string NameStartsWith { get; set; }
     }
 
     [Route("/customers", "GET")]
@@ -450,6 +452,7 @@ namespace Chinook.ServiceModel
         : QueryDb<Tracks>, IReturn<QueryResponse<Tracks>>, IGet
     {
         public long? TrackId { get; set; }
+        public string NameContains { get; set; }
     }
 
     [Route("/albums/{AlbumId}", "PUT")]

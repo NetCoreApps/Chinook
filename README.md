@@ -172,7 +172,49 @@ https://localhost:5001/tracks?TrackId=3504
 
 ![](https://raw.githubusercontent.com/ServiceStack/docs/master/docs/images/autoquery/chinook-crud-gangnam-style.png)
 
+### Extending AutoQuery Services
+
+Before our App is ready to ship, lets extend the existing AutoQuery Services by formalizing the implicit queries 
+we used above into typed properties so they can be used by Typed clients as well:
+
+```csharp
+public class QueryArtists : QueryDb<Artists>, IGet
+{
+    public long? ArtistId { get; set; }
+    public long[] ArtistIdBetween { get; set; }
+    public string NameStartsWith { get; set; }
+}
+
+public class QueryTracks : QueryDb<Tracks>, IGet
+{
+    public long? TrackId { get; set; }
+    public string NameContains { get; set; }
+}
+```
+
+By adding typed properties for all the filters we want available to our API consumers, we make them discoverable & 
+accessible to all [ServiceStack Reference languages](https://docs.servicestack.net/add-servicestack-reference)
+who can consume them as normal. Here's the above implicit queries accessed from a Typed C# Client: 
+
+```csharp
+var response = client.Get(new QueryArtists {
+    ArtistIdBetween = new long[]{ 1, 100 },
+    NameStartsWith = "F",
+});
+response.PrintDump();
+
+var response = client.Get(new QueryTracks {
+    NameContains = "Heart",
+    Skip = 5,
+    Take = 10,
+    Fields = "TrackId,Name,Milliseconds"
+});
+response.PrintDump();
+```
+
 ## Deployments
+
+Our enhanced AutoGen populated Chinook App is now ready to ship! Lets get it deployed with GitHub Actions & Mix:
 
 ### Include chinook.sqlite
 
@@ -322,7 +364,7 @@ The `release-ghr-vanilla` mix template needs 6 pieces of information to perform 
 
 `CR_PAT` and `DEPLOY_KEY` should be treated as highly confidential, but for the rest, we used the following values.
 
-Secrets can be added using either the [GitHub CLI](https://cli.github.com) or GitHub UI to add [repository secrets](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) used by the GitHub Actions, e.g:
+Secrets can be added using the [GitHub CLI](https://cli.github.com) or GitHub UI to add [repository secrets](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) used by the GitHub Actions, e.g:
 
     $ gh secret set DEPLOY_HOST       -b"chinook.netcore.io"
     $ gh secret set DEPLOY_PORT       -b"22"

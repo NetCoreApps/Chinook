@@ -4,17 +4,18 @@ using NUnit.Framework;
 using ServiceStack;
 using ServiceStack.Text;
 using Chinook.ServiceModel;
+using Chinook.ServiceModel.Types;
 
 namespace Chinook.Tests
 {
     [Ignore("AutoQuery & CRUD Example")]
     public class AutoQueryCrudTests
     {
+        JsonServiceClient client = new("https://localhost:5001");
+
         [Test]
         public void Can_create_and_query_new_Artist_Album_and_Track()
         {
-            var client = new JsonServiceClient("https://localhost:5001");
-
             var genres = client.Get(new QueryGenres()).Results.ToDictionary(x => x.Name);
             var mediaTypes = client.Get(new QueryMediaTypes()).Results.ToDictionary(x => x.Name);
             
@@ -42,6 +43,28 @@ namespace Chinook.Tests
                 TrackId = newTrack.Id.ToLong(), 
             });
             track.PrintDump();
+        }
+
+        [Test]
+        public void Example_Artists_Query()
+        {
+            var response = client.Get(new QueryArtists {
+                ArtistIdBetween = new long[]{ 1, 100 },
+                NameStartsWith = "F",
+            });
+            response.PrintDump();
+        }
+
+        [Test]
+        public void Example_Tracks_Query()
+        {
+            var response = client.Get(new QueryTracks {
+                NameContains = "Heart",
+                Skip = 5,
+                Take = 10,
+                Fields = "TrackId,Name,Milliseconds"
+            });
+            response.PrintDump();
         }
     }
 }
