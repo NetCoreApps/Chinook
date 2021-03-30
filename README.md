@@ -216,7 +216,8 @@ response.PrintDump();
 
 Our enhanced AutoGen populated Chinook App is now ready to ship! Lets get it deployed with GitHub Actions & Mix:
 
-### Include chinook.sqlite
+<details>
+  <summary>Include chinook.sqlite</summary>
 
 To deploy the embedded `chinook.sqlite` with our App, set its File Properties to **Copy if newer**:
 
@@ -232,6 +233,8 @@ Or manually by adding the following to the `Chinook.csproj`.
   </Content>
 </ItemGroup>
 ```
+
+</details>
 
 ## Deploy to Digital Ocean droplet using GitHub Actions and SSH
 
