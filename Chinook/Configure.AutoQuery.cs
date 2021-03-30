@@ -10,7 +10,8 @@ namespace Chinook
                 MaxLimit = 1000,
                 IncludeTotal = true,
                 // GenerateCrudServices = new GenerateCrudServices {
-                //     AutoRegister = true
+                //     AutoRegister = true,
+                //     AddDataContractAttributes = false,
                 // }
             });
         }
