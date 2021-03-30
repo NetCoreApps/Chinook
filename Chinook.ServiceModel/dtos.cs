@@ -1,5 +1,5 @@
 /* Options:
-Date: 2021-03-30 16:55:26
+Date: 2021-03-30 20:58:04
 Version: 5.105
 Tip: To override a DTO option, remove "//" prefix before updating
 BaseUrl: https://localhost:5001
@@ -32,21 +32,8 @@ using System.Runtime.Serialization;
 using ServiceStack;
 using ServiceStack.DataAnnotations;
 using Chinook.ServiceModel.Types;
-using Chinook;
 using Chinook.ServiceModel;
 
-
-namespace Chinook
-{
-
-    public class MyTable
-    {
-        [AutoIncrement]
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-    }
-}
 
 namespace Chinook.ServiceModel
 {
@@ -712,6 +699,14 @@ namespace Chinook.ServiceModel.Types
         public string Name { get; set; }
     }
 
+    public class MyTable
+    {
+        [AutoIncrement]
+        public long Id { get; set; }
+
+        public string Name { get; set; }
+    }
+
     public class Playlists
     {
         [AutoIncrement]
@@ -737,3 +732,4 @@ namespace Chinook.ServiceModel.Types
         public decimal UnitPrice { get; set; }
     }
 }
+

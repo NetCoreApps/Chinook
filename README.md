@@ -166,7 +166,7 @@ Which outputs:
         ]
     }
 
-The same query in a browser:
+Viewing the same query in a browser:
 
 https://localhost:5001/tracks?TrackId=3504
 

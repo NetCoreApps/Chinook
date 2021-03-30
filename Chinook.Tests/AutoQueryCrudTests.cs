@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
-using Chinook.ServiceModel;
 using NUnit.Framework;
 using ServiceStack;
 using ServiceStack.Text;
+using Chinook.ServiceModel;
 
 namespace Chinook.Tests
 {
