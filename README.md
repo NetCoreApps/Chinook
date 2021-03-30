@@ -49,13 +49,13 @@ With AutoQuery & CRUD APIs generated for each of Chinook's RDBMS tables we can n
 with any of the built-in [Implicit Querying Conventions](https://docs.servicestack.net/autoquery-rdbms#implicit-conventions), 
 e.g. We can view all artists starting `F%` within the first 100 registered artists with:
 
-https://localhost:5001/artists?ArtistId%3C=100&NameStartsWith=F
+https://localhost:5001/artists?ArtistIdBetween=1,100&NameStartsWith=F
 
-![](https://raw.githubusercontent.com/ServiceStack/docs/master/docs/images/autoquery/chinook-autoquery-artists2.png)
+![](https://raw.githubusercontent.com/ServiceStack/docs/master/docs/images/autoquery/chinook-autoquery-artists.png)
 
 All the standard querying functions are available, e.g. Sorting for [Multiple OrderBy's](https://docs.servicestack.net/autoquery-rdbms#multiple-orderbys),
 Page through query results with [Skip and Take](https://docs.servicestack.net/autoquery-rdbms#paging-and-ordering),
-selecting [Custom Fields](https://docs.servicestack.net/autoquery-rdbms#custom-fields) & applying [custom JSON transformations](https://docs.servicestack.net/customize-json-responses), e.g:
+selecting [Custom Fields](https://docs.servicestack.net/autoquery-rdbms#custom-fields) & applying [custom JSON configuration](https://docs.servicestack.net/customize-json-responses), e.g:
 
 https://localhost:5001/tracks?NameContains=Heart&OrderBy=Name&Skip=5&Take=10&fields=TrackId,Name,Milliseconds&jsconfig=ExcludeDefaultValues
 
@@ -68,38 +68,109 @@ https://localhost:5001/tracks.json?NameContains=Heart&OrderBy=Name&Skip=5&Take=1
 
 ![](https://raw.githubusercontent.com/ServiceStack/docs/master/docs/images/autoquery/chinook-autoquery-tracks-json.png)
 
-## Convert to typed ServiceStack Services
+## Convert to code-first Services
 
 ServiceStack's [AutoGen feature](https://docs.servicestack.net/autogen) creates typed ServiceStack Services in memory
-based on your RDBMS Schema on each Startup, which are indistinguishable from hand-crafted Services that can take 
-advantage of ecosystem of features around ServiceStack Services like 
+based on the configured RDBMS Schema at Startup, they're indistinguishable from hand-crafted code-first Services and can 
+take advantage of ecosystem of features around ServiceStack Services like 
 [Add ServiceStack Reference](https://docs.servicestack.net/add-servicestack-reference) for generating rich, typed APIs
 around popular Web, Mobile and Desktop programming languages.
 
 The disadvantage of autogen Services is that they only exist as generated Types at runtime limiting their ability to 
-be easily enhanced further. When further customization is required the AutoGen Types can be synthesized into Typed
+be easily enhanced further. When further customization is needed the AutoGen Types can be synthesized into Typed
 C# DTOs by generating them in your ServiceModel project with:
 
     $ cd Chinook.ServiceModel
     $ x csharp https://localhost:5001 -path /crud/all/csharp
 
 Which generates the C# Models and APIs that would otherwise have been generated at Startup, which since they exist in 
-source code no longer need to be generated, which can now be disabled by removing AutoGen's `AutoRegister` directive:
+source code no longer need to be generated and can now be disabled by removing AutoGen's `AutoRegister` directive:
 
 ```csharp
 appHost.Plugins.Add(new AutoQueryFeature {
     MaxLimit = 1000,
     IncludeTotal = true,
     // GenerateCrudServices = new GenerateCrudServices {
-    //     AutoRegister = true
+    //     AutoRegister = true,
+    //     AddDataContractAttributes = false,
     // }
 });
 ```
 
-When generating the types there's also an opportunity to customize the 
-[code generation with App conventions](https://docs.servicestack.net/autogen#customize-code-generation-to-include-app-conventions) 
-should additional validation & authorization need to be applied, e.g. for write operations or selected tables.
+Should you wish to apply any App conventions or additional validation & authorization to the generated Services 
+(e.g. for write operations or selected tables), the [code generation can be customized](https://docs.servicestack.net/autogen#customize-code-generation-to-include-app-conventions)
+before generating the types.
 
+### Using generated Services
+
+After a restart, the Chinook App switches from a DB-first generated ServiceStack App to a standard code-first ServiceStack App
+with the same exact functionality except that the Typed AutoQuery APIs exists as C# source code which can be easily enhanced,
+e.g. with [Declarative or Authorization attributes](https://docs.servicestack.net/declarative-validation).
+
+A trait of ServiceStack, is that its Service Models are symmetrical, that is, the same server DTOs used to define your Services Contract 
+can be used as-is in its [Smart, Generic Service Clients](https://docs.servicestack.net/csharp-client) to enable an end-to-end Typed API.
+
+Which means we already have everything we need to immediately start developing client applications against its AutoQuery CRUD APIs. 
+Lets test this out by using the Typed DTOs to add PSY's iconic "Gangnam Style" to our Chinook database:
+
+```csharp
+// Fetch Lookup Tables
+var genres = client.Get(new QueryGenres()).Results.ToDictionary(x => x.Name);
+var mediaTypes = client.Get(new QueryMediaTypes()).Results.ToDictionary(x => x.Name);
+
+// Create new Artist, Album & Track
+var newArtist = client.Post(new CreateArtists { Name = "PSY" });
+var newAlbum = client.Post(new CreateAlbums {
+    ArtistId = newArtist.Id.ToLong(),
+    Title = "Psy 6 (Six Rules), Part 1",
+});
+client.Post(new CreateTracks {
+    AlbumId = newAlbum.Id.ToLong(),
+    Name = "Gangnam Style",
+    Composer = "Park Jae-sang",
+    Milliseconds = (long)new TimeSpan(0,3,39).TotalMilliseconds,
+    GenreId = genres["Electronica/Dance"].GenreId,
+    UnitPrice = 0.99m,
+    MediaTypeId = mediaTypes["AAC audio file"].MediaTypeId,
+    Bytes = 6683350,
+});
+```
+
+We can then quickly view the results of any Service Response with built-in [Dump Utils](https://docs.servicestack.net/dump-utils):
+
+```csharp
+var track = client.Get(new QueryTracks {
+    TrackId = newTrack.Id.ToLong(), 
+});
+track.PrintDump();
+```
+
+Which outputs:
+
+    {
+        offset: 0,
+        total: 1,
+        results: 
+        [
+            {
+                trackId: 3504,
+                name: Gangnam Style,
+                albumId: 348,
+                mediaTypeId: 5,
+                genreId: 15,
+                composer: Park Jae-sang,
+                milliseconds: 219000,
+                bytes: 6683350,
+                unitPrice: 0.99
+            }
+        ]
+    }
+
+The same query in a browser:
+
+https://localhost:5001/tracks?TrackId=3504
+
+![](https://raw.githubusercontent.com/ServiceStack/docs/master/docs/images/autoquery/chinook-crud-gangnam-style.png)
 
 ## Deployments
 
@@ -108,7 +179,6 @@ should additional validation & authorization need to be applied, e.g. for write 
 To deploy the embedded `chinook.sqlite` with our App, set its File Properties to **Copy if newer**:
 
 ![](https://raw.githubusercontent.com/ServiceStack/docs/master/docs/images/autoquery/chinook.sqlite-properties.png)
-
 
 Or manually by adding the following to the `Chinook.csproj`.
 
