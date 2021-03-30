@@ -7,6 +7,7 @@ using Chinook.ServiceModel;
 
 namespace Chinook.Tests
 {
+    [Ignore("AutoQuery & CRUD Example")]
     public class AutoQueryCrudTests
     {
         [Test]
