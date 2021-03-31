@@ -386,3 +386,37 @@ The tag is used as the image version and GitHub Actions then runs the `release.y
 
 ![](https://raw.githubusercontent.com/ServiceStack/docs/master/docs/images/autoquery/chinook-release-action.png)
 
+## ServiceStack Studio
+
+With Chinook now deployed at:
+
+### [chinook.netcore.io](https://chinook.netcore.io)
+
+We start taking advantage of functionality around ServiceStack Services like the [ServiceStack Studio](https://docs.servicestack.net/studio)
+Windows Desktop App which includes an Instant UI around AutoQuery Services that can be used to Query, Create & Update
+our Chinook Database:
+
+### [app://studio?connect=https://chinook.netcore.io](app://studio?connect=https://chinook.netcore.io)
+
+[![](https://raw.githubusercontent.com/ServiceStack/docs/master/docs/images/autoquery/chinook-studio.png)](app://studio?connect=https://chinook.netcore.io)
+
+## Generate Instant Client Apps
+
+Another site adding value-added functionality around ServiceStack Services is [apps.servicestack.net](https://apps.servicestack.net) which
+provides instant utility for API Consumers who can use it to generate Client Apps in their preferred languages and open
+it instantly in their preferred IDE of choice. 
+
+E.g. Here's the Artist query above we can customize and run in Kotlin: 
+
+[![](https://raw.githubusercontent.com/ServiceStack/docs/master/docs/images/autoquery/chinook-instant-apps-kotlin.png)](https://apps.servicestack.net/#chinook.netcore.io/kotlin/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F))
+
+Which can be executed and downloaded in each of the supported [Add ServiceStack Reference](https://docs.servicestack.net/add-servicestack-reference) languages:
+
+ - [C#](https://apps.servicestack.net/#chinook.netcore.io/csharp/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Fcsharp)
+ - [Node.js](https://apps.servicestack.net/#chinook.netcore.io/typescript/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Ftypescript)
+ - [Dart](https://apps.servicestack.net/#chinook.netcore.io/dart/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Fdart)
+ - [Java](https://apps.servicestack.net/#chinook.netcore.io/java/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Fjava)
+ - [Kotlin](https://apps.servicestack.net/#chinook.netcore.io/kotlin/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Fkotlin)
+ - [Swift](https://apps.servicestack.net/#chinook.netcore.io/swift/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Fswift)
+ - [VB.NET](https://apps.servicestack.net/#chinook.netcore.io/vbnet/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Fvbnet)
+ - [F#](https://apps.servicestack.net/#chinook.netcore.io/fsharp/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Fkotlin)
