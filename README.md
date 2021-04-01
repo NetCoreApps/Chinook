@@ -105,7 +105,7 @@ before generating the types.
 
 After a restart, the Chinook App switches from a DB-first generated ServiceStack App to a standard code-first ServiceStack App
 with the same exact functionality except that the Typed AutoQuery APIs exists as C# source code which can be easily enhanced,
-e.g. with [Declarative or Authorization attributes](https://docs.servicestack.net/declarative-validation).
+e.g. with [Declarative Validation and Authorization attributes](https://docs.servicestack.net/declarative-validation).
 
 A trait of ServiceStack, is that its Service Models are symmetrical, that is, the same server DTOs used to define your Services Contract 
 can be used as-is in its [Smart, Generic Service Clients](https://docs.servicestack.net/csharp-client) to enable an end-to-end Typed API.
