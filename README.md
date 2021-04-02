@@ -365,7 +365,7 @@ The `release-ghr-vanilla` mix template needs 6 pieces of information to perform 
 - `DEPLOY_KEY` - SSH private key used to remotely access deploy server/app host
 - `LETSENCRYPT_EMAIL` - Email address for LetsEncrypt TLS certificate generation
 
-`CR_PAT` and `DEPLOY_KEY` should be treated as highly confidential, but for the rest, we used the following values.
+`CR_PAT` and `DEPLOY_KEY` should be treated as highly confidential, but for the rest, we used the values below.
 
 Secrets can be added using the [GitHub CLI](https://cli.github.com) or GitHub UI to add [repository secrets](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) used by the GitHub Actions, e.g:
 
@@ -393,8 +393,8 @@ With Chinook now deployed at:
 ### [chinook.netcore.io](https://chinook.netcore.io)
 
 We start taking advantage of functionality around ServiceStack Services like the [ServiceStack Studio](https://docs.servicestack.net/studio)
-Windows Desktop App which includes an Instant UI around AutoQuery Services that can be used to Query, Create & Update
-our Chinook Database:
+Desktop App which includes an Instant UI around AutoQuery Services that can be used to Query, Create & Update
+our Chinook DB:
 
 ### [app://studio?connect=https://chinook.netcore.io](app://studio?connect=https://chinook.netcore.io)
 
@@ -403,8 +403,7 @@ our Chinook Database:
 ## Generate Instant Client Apps
 
 Another site adding value-added functionality around ServiceStack Services is [apps.servicestack.net](https://apps.servicestack.net) which
-provides instant utility for API Consumers who can use it to generate Client Apps in their preferred languages and open
-it instantly in their preferred IDE of choice. 
+provides instant utility for API Consumers who can use it to generate Client Apps and open them instantly in their preferred language and IDE of choice. 
 
 E.g. Here's the Artist query above we can customize and run in Kotlin: 
 
@@ -412,11 +411,11 @@ E.g. Here's the Artist query above we can customize and run in Kotlin:
 
 Which can be executed and downloaded in each of the supported [Add ServiceStack Reference](https://docs.servicestack.net/add-servicestack-reference) languages:
 
- - [C#](https://apps.servicestack.net/#chinook.netcore.io/csharp/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Fcsharp)
- - [Node.js](https://apps.servicestack.net/#chinook.netcore.io/typescript/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Ftypescript)
- - [Dart](https://apps.servicestack.net/#chinook.netcore.io/dart/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Fdart)
- - [Java](https://apps.servicestack.net/#chinook.netcore.io/java/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Fjava)
- - [Kotlin](https://apps.servicestack.net/#chinook.netcore.io/kotlin/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Fkotlin)
- - [Swift](https://apps.servicestack.net/#chinook.netcore.io/swift/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Fswift)
- - [VB.NET](https://apps.servicestack.net/#chinook.netcore.io/vbnet/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Fvbnet)
- - [F#](https://apps.servicestack.net/#chinook.netcore.io/fsharp/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Fkotlin)
+ - [C#](https://apps.servicestack.net/#chinook.netcore.io/csharp/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Fcsharp&name=MyApp)
+ - [Node.js](https://apps.servicestack.net/#chinook.netcore.io/typescript/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Ftypescript&name=MyApp)
+ - [Dart](https://apps.servicestack.net/#chinook.netcore.io/dart/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Fdart&name=MyApp)
+ - [Java](https://apps.servicestack.net/#chinook.netcore.io/java/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Fjava&name=MyApp)
+ - [Kotlin](https://apps.servicestack.net/#chinook.netcore.io/kotlin/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Fkotlin&name=MyApp)
+ - [Swift](https://apps.servicestack.net/#chinook.netcore.io/swift/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Fswift&name=MyApp)
+ - [VB.NET](https://apps.servicestack.net/#chinook.netcore.io/vbnet/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Fvbnet&name=MyApp)
+ - [F#](https://apps.servicestack.net/#chinook.netcore.io/fsharp/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)) - [download.zip](https://gist.cafe/archive?url=https%3A%2F%2Fapps.servicestack.net%2Fgists%2Fchinook.netcore.io%2Fkotlin&name=MyApp)
