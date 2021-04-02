@@ -407,7 +407,7 @@ provides instant utility for API Consumers who can use it to generate Client App
 
 E.g. Here's the Artist query above we can customize and run in Kotlin:
 
-https://apps.servicestack.net/#chinook.netcore.io/kotlin/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)
+[apps.servicestack.net/#chinook.netcore.io/kotlin/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F)](https://apps.servicestack.net/#chinook.netcore.io/kotlin/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F))
 
 [![](https://raw.githubusercontent.com/ServiceStack/docs/master/docs/images/autoquery/chinook-instant-apps-kotlin.png)](https://apps.servicestack.net/#chinook.netcore.io/kotlin/AutoQuery/QueryArtists(ArtistIdBetween:[1,100],NameStartsWith:F))
 
