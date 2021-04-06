@@ -369,10 +369,10 @@ The `release-ghr-vanilla` mix template needs 6 pieces of information to perform 
 
 Secrets can be added using the [GitHub CLI](https://cli.github.com) or GitHub UI to add [repository secrets](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository) used by the GitHub Actions, e.g:
 
-    $ gh secret set DEPLOY_HOST       -b"chinook.netcore.io"
-    $ gh secret set DEPLOY_PORT       -b"22"
-    $ gh secret set DEPLOY_USERNAME   -b"root"
-    $ gh secret set LETSENCRYPT_EMAIL -b"team@servicestack.net"
+    gh secret set DEPLOY_HOST       -b"chinook.netcore.io"
+    gh secret set DEPLOY_PORT       -b"22"
+    gh secret set DEPLOY_USERNAME   -b"root"
+    gh secret set LETSENCRYPT_EMAIL -b"team@servicestack.net"
 
 </details>
 
