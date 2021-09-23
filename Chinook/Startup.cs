@@ -42,8 +42,20 @@ namespace Chinook
         {
             SetConfig(new HostConfig
             {
-                DebugMode = AppSettings.Get(nameof(HostConfig.DebugMode), false)
+                DebugMode = AppSettings.Get(nameof(HostConfig.DebugMode), false),
+                UseSameSiteCookies = true
             });
+            
+                        
+            Plugins.Add(new CorsFeature(
+                new[]
+                {
+                    "http://localhost:3000",
+                    "https://docs-vitepress.servicestack.net"
+                },
+                allowCredentials: true,
+                allowedHeaders: "Content-Type, Allow, Authorization"
+            ));
         }
     }
 }
