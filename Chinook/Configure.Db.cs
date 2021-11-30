@@ -1,9 +1,12 @@
-using Chinook.ServiceModel;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ServiceStack;
 using ServiceStack.Data;
+using ServiceStack.DataAnnotations;
 using ServiceStack.OrmLite;
+
+[assembly: HostingStartup(typeof(Chinook.ConfigureDb))]
 
 namespace Chinook
 {
@@ -15,29 +18,20 @@ namespace Chinook
     //     public string Name { get; set; }
     // }
 
-    public class ConfigureDb : IConfigureServices, IConfigureAppHost
+    public class ConfigureDb : IHostingStartup
     {
-        IConfiguration Configuration { get; }
-        public ConfigureDb(IConfiguration configuration) => Configuration = configuration;
-
-        public void Configure(IServiceCollection services)
+        public void Configure(IWebHostBuilder builder)
         {
-            services.AddSingleton<IDbConnectionFactory>(new OrmLiteConnectionFactory(
-                Configuration.GetConnectionString("DefaultConnection")
-                ?? "chinook.sqlite",
-                SqliteDialect.Provider));
-        }
-
-        public void Configure(IAppHost appHost)
-        {
-            appHost.GetPlugin<SharpPagesFeature>()?.ScriptMethods.Add(new DbScriptsAsync());
-
-            // Create non-existing Table and add Seed Data Example
-            // using var db = appHost.Resolve<IDbConnectionFactory>().Open();
-            // if (db.CreateTableIfNotExists<MyTable>())
-            // {
-            //     db.Insert(new MyTable { Name = "Seed Data for new MyTable" });
-            // }
+            builder.ConfigureServices((context,services) =>
+            {
+                services.AddSingleton<IDbConnectionFactory>(new OrmLiteConnectionFactory(
+                    context.Configuration.GetConnectionString("DefaultConnection")
+                    ?? "chinook.sqlite",
+                    SqliteDialect.Provider));
+            }).ConfigureAppHost(appHost =>
+            {
+                appHost.GetPlugin<SharpPagesFeature>()?.ScriptMethods.Add(new DbScriptsAsync());
+            });
         }
     }
 }

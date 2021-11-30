@@ -1,18 +1,20 @@
+using Microsoft.AspNetCore.Hosting;
 using ServiceStack;
+
+[assembly: HostingStartup(typeof(Chinook.ConfigureAutoQuery))]
 
 namespace Chinook
 {
-    public class ConfigureAutoQuery : IConfigureAppHost
+    public class ConfigureAutoQuery : IHostingStartup
     {
-        public void Configure(IAppHost appHost)
+        public void Configure(IWebHostBuilder builder)
         {
-            appHost.Plugins.Add(new AutoQueryFeature {
-                MaxLimit = 1000,
-                IncludeTotal = true,
-                // GenerateCrudServices = new GenerateCrudServices {
-                //     AutoRegister = true,
-                //     AddDataContractAttributes = false,
-                // }
+            builder.ConfigureAppHost(appHost =>
+            {
+                appHost.Plugins.Add(new AutoQueryFeature {
+                    MaxLimit = 1000,
+                    IncludeTotal = true
+                });
             });
         }
     }
