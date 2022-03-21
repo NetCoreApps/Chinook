@@ -30,8 +30,8 @@ jobs:
           file: Dockerfile
           context: .
           push: true
-          tags: ghcr.io/${{ env.image_repository_name }}:${{ github.event.release.tag_name }}
-  
+          tags: ghcr.io/${{ env.image_repository_name }}:latest
+    
   deploy_via_ssh:
     needs: push_to_registry
     runs-on: ubuntu-20.04
@@ -48,7 +48,8 @@ jobs:
       - name: docker-compose file prep
         uses: danielr1996/envsubst-action@1.0.0
         env:
-          RELEASE_VERSION: ${{ github.event.release.tag_name }}
+          RELEASE_VERSION: latest
+          APP_NAME: ${{ github.event.repository.name }}
           IMAGE_REPO: ${{ env.image_repository_name }}
           HOST_DOMAIN: ${{ env.domain }}
           LETSENCRYPT_EMAIL: ${{ env.letsencrypt_email }}
@@ -63,7 +64,7 @@ jobs:
           username: ${{ secrets.DEPLOY_USERNAME }}
           port: ${{ secrets.DEPLOY_PORT }}
           key: ${{ secrets.DEPLOY_KEY }}
-          source: .deploy/${{ github.event.repository.name }}-docker-compose.yml
+          source: ".deploy/${{ github.event.repository.name }}-docker-compose.yml"
           target: "~/"
 
       - name: Set the value
