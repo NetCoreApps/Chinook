@@ -25,5 +25,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\modules\shared\custom-end.html" />
+  </ItemGroup>
 
 </Project>

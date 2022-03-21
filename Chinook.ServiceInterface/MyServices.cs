@@ -2,13 +2,12 @@ using System;
 using ServiceStack;
 using Chinook.ServiceModel;
 
-namespace Chinook.ServiceInterface
+namespace Chinook.ServiceInterface;
+
+public class MyServices : Service
 {
-    public class MyServices : Service
+    public object Any(Hello request)
     {
-        public object Any(Hello request)
-        {
-            return new HelloResponse { Result = $"Hello, {request.Name}!" };
-        }
+        return new HelloResponse { Result = $"Hello, {request.Name}!" };
     }
 }

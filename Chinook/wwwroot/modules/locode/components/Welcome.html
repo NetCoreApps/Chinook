@@ -1,0 +1,29 @@
+<script>
+App.components({
+    Welcome() {
+        return {
+            $template: '#welcome-template',
+            lastOrders: [],
+            mounted() {
+                client.api(new QueryInvoices({ orderBy:'-InvoiceId', take:5, fields:'InvoiceId,CustomerId,InvoiceDate,Total,BillingCountry,BillingCity' }), { jsconfig: 'edv' })
+                    .then(api => {
+                        if (api.succeeded) {
+                            this.lastOrders = api.response.results
+                        }
+                    })
+            }
+        }
+    }
+})
+</script>
+<template id="welcome-template">
+    <div class="pl-4" @vue:mounted="mounted">
+        <h1 class="text-3xl">
+            Welcome to Chinook Locode
+        </h1>
+        <div v-if="lastOrders.length" class="mt-8">
+            <h3 class="text-xl mb-4">Here are your last {{lastOrders.length}} orders:</h3>
+            <div class="max-w-screen-md" v-scope="PreviewObject({ val:() => lastOrders })"></div>
+        </div>
+    </div>
+</template>
