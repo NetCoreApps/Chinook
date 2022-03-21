@@ -1,7 +1,12 @@
 name: Release
 on:
-  release:
-    types: [published]
+  # Triggered on every successful Build action
+  workflow_run:
+    workflows: ["Build"]
+    branches: [main,master]
+    types:
+      - completed
+
 jobs:
   push_to_registry:
     runs-on: ubuntu-20.04
@@ -48,8 +53,8 @@ jobs:
           HOST_DOMAIN: ${{ env.domain }}
           LETSENCRYPT_EMAIL: ${{ env.letsencrypt_email }}
         with:
-          input: deploy/docker-compose-template.yml
-          output: deploy/Chinook-docker-compose.yml
+          input: .deploy/docker-compose-template.yml
+          output: .deploy/${{ github.event.repository.name }}-docker-compose.yml
 
       - name: copy compose file via scp
         uses: appleboy/scp-action@v0.1.1
@@ -58,7 +63,7 @@ jobs:
           username: ${{ secrets.DEPLOY_USERNAME }}
           port: ${{ secrets.DEPLOY_PORT }}
           key: ${{ secrets.DEPLOY_KEY }}
-          source: "deploy/Chinook-docker-compose.yml"
+          source: .deploy/${{ github.event.repository.name }}-docker-compose.yml
           target: "~/"
 
       - name: Set the value
@@ -79,4 +84,5 @@ jobs:
           envs: APPTOKEN,USERNAME
           script: |
             echo $APPTOKEN | docker login ghcr.io -u $USERNAME --password-stdin
-            docker-compose -f ~/deploy/Chinook-docker-compose.yml up -d
+            docker-compose -f ~/.deploy/${{ github.event.repository.name }}-docker-compose.yml pull
+            docker-compose -f ~/.deploy/${{ github.event.repository.name }}-docker-compose.yml up -d
