@@ -3,32 +3,12 @@
     <title>Chinook Locode</title>
     <link href="/logo.svg" rel="icon">
     <link rel="stylesheet" href="/modules/shared/css/ui.css">
-    <style>
-        .py-48{padding-top:12rem;padding-bottom:12rem}
-        .py-16{padding-top:4rem;padding-bottom:4rem}
-        .pb-12{padding-bottom:3rem}
-        .pl-12{padding-left:3rem}
-        .-mr-3{margin-right:-0.75rem}
-        .-mr-40{margin-right:-10rem}
-        .mt-12{margin-top:3rem}
-        .mt-20{margin-top:5rem}
-        .max-w-3xl{max-width:48rem}.max-w-7xl{max-width:80rem}
-        .max-w-none{max-width:none}
-        .top-8{top:2rem}
-        .left-80{left:20rem}
-        .right-1\/2{right:50%}
-        .text-5xl{font-size:3rem;line-height:1}
-        .text-gray-200{color:rgb(229 231 235)}
-        .inset-y-0{top:0;bottom:0}
-        .gap-24{gap:6rem}
-        .rounded-l-3xl{border-top-left-radius:1.5rem;border-bottom-left-radius:1.5rem}
-    </style>
 </head>
 <body class="p-4">
 
 <div class="bg-white pb-8 pb-12">
-    <div class="pt-8 overflow-hidden relative py-48">
-        <div class="mx-auto px-4 px-8 max-w-7xl grid grid-cols-2 gap-24">
+    <div class="pt-8 overflow-hidden sm:pt-12 lg:relative lg:py-48">
+        <div class="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl lg:grid lg:grid-cols-2 lg:gap-24">
             <div>
                 <div>
                     <img class="h-11 w-auto" src="/logo.svg" alt="Chinook Logo">
@@ -36,27 +16,27 @@
                 <div class="mt-20">
                     <div>
                         <a href="/locode" class="inline-flex space-x-4">
-                            <span class="rounded bg-indigo-50 px-2.5 py-1 text-xs font-semibold text-indigo-600 tracking-wide uppercase"> What's new </span>
-                            <span class="inline-flex items-center text-sm font-medium text-indigo-600 space-x-1">
+                            <span class="rounded bg-rose-50 px-2.5 py-1 text-xs font-semibold text-rose-500 tracking-wide uppercase"> What's new </span>
+                            <span class="inline-flex items-center text-sm font-medium text-rose-500 space-x-1">
                             <span>Open Chinook in Locode</span>
-                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                            </svg>
-                          </span>
+                              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                              </svg>
+                            </span>
                         </a>
                     </div>
-                    <div class="mt-6 max-w-xl">
-                        <h1 class="font-extrabold text-gray-900 tracking-tight text-5xl">
+                    <div class="mt-6 sm:max-w-xl">
+                        <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">
                             Chinook Auto APIs &amp; Locode App
                         </h1>
                         <p class="mt-6 text-xl text-gray-500">
                             Chinook is a customized code-first App using
-                            <a class="text-indigo-600" href="https://docs.servicestack.net/autoquery-autogen">AutoGen</a> to
-                            <a class="text-indigo-600" href="https://docs.servicestack.net/autoquery-autogen#export-code-first-dtos">export</a>
+                            <a class="text-rose-500" href="https://docs.servicestack.net/autoquery-autogen">AutoGen</a> to
+                            <a class="text-rose-500" href="https://docs.servicestack.net/autoquery-autogen#export-code-first-dtos">export</a>
                             Chinook's RDBMS Tables into 
-                            <a class="text-indigo-600" href="https://github.com/NetCoreApps/Chinook/blob/main/Chinook.ServiceModel/Types/Models.cs">Models.cs</a>
+                            <a class="text-rose-500" href="https://github.com/NetCoreApps/Chinook/blob/main/Chinook.ServiceModel/Types/Models.cs">Models.cs</a>
                             generating code-first
-                            <a class="text-indigo-600" href="https://docs.servicestack.net/autoquery-rdbms">AutoQuery</a> APIs
+                            <a class="text-rose-500" href="https://docs.servicestack.net/autoquery-rdbms">AutoQuery</a> APIs
                             &amp; Data Models that's further annotated to create a customized Locode App.
                         </p>
                     </div>
@@ -66,22 +46,22 @@
                         </p>
                         <div class="flex items-center mb-2">
                             <svg class="w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><g fill="none"><path d="M4 5c0-1.007.875-1.755 1.904-2.223C6.978 2.289 8.427 2 10 2s3.022.289 4.096.777C15.125 3.245 16 3.993 16 5v4.758a4.485 4.485 0 0 0-1-.502V6.698a4.92 4.92 0 0 1-.904.525C13.022 7.711 11.573 8 10 8s-3.022-.289-4.096-.777A4.92 4.92 0 0 1 5 6.698V15c0 .374.356.875 1.318 1.313c.916.416 2.218.687 3.682.687c.22 0 .437-.006.65-.018c.447.367.966.65 1.534.822c-.68.127-1.417.196-2.184.196c-1.573 0-3.022-.289-4.096-.777C4.875 16.755 4 16.007 4 15V5zm1 0c0 .374.356.875 1.318 1.313C7.234 6.729 8.536 7 10 7s2.766-.27 3.682-.687C14.644 5.875 15 5.373 15 5c0-.374-.356-.875-1.318-1.313C12.766 3.271 11.464 3 10 3s-2.766.27-3.682.687C5.356 4.125 5 4.627 5 5zm8.5 12c.786 0 1.512-.26 2.096-.697l2.55 2.55a.5.5 0 1 0 .708-.707l-2.55-2.55A3.5 3.5 0 1 0 13.5 17zm0-1a2.5 2.5 0 1 1 0-5a2.5 2.5 0 0 1 0 5z" fill="currentColor"></path></g></svg>
-                            <a class="text-xl text-indigo-600" href="/locode">Manage database with Locode</a>
+                            <a class="text-xl text-rose-500" href="/locode">Manage database with Locode</a>
                         </div>
                         <div class="flex items-center mb-2">
                             <svg class="w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 32"><g fill="currentColor"><path d="M27.464 2.314a.501.501 0 0 0-.698-.257L14.86 8.339a.499.499 0 0 0-.233.621l.245.641l-6.873 3.769a.5.5 0 0 0-.222.63l.228.549l-7.299 3.488a.5.5 0 0 0-.246.643l1.498 3.61a.5.5 0 0 0 .629.28l7.625-2.701l.228.549a.5.5 0 0 0 .601.289l7.276-2.097l.218.569a.497.497 0 0 0 .612.299l13-4a.498.498 0 0 0 .317-.663l-5-12.501zM2.7 21.469l-1.134-2.734l6.823-3.261l1.439 3.47L2.7 21.469zm8.491-1.846l-.238-.574l-1.843-4.445l-.238-.573l6.336-3.475l2.374 6.134l.375.981l-6.766 1.952zm8.109-1.238l-.203-.531c-.003-.011-.001-.024-.006-.035l-.618-1.597l-2.754-7.206l11.023-5.815l4.592 11.48L19.3 18.385z"></path><path d="M28.964.314a.5.5 0 0 0-.929.371l6 15a.502.502 0 0 0 .651.279a.501.501 0 0 0 .279-.65l-6.001-15z"></path><path d="M18 21h-3c-1.14 0-2 .86-2 2v1.315l-5.879 6.859a.5.5 0 1 0 .758.651L13.73 25H16v6.5a.5.5 0 0 0 1 0V25h2.27l5.85 6.825a.497.497 0 0 0 .705.054a.5.5 0 0 0 .054-.705L20 24.315v-1.24C20 21.912 19.122 21 18 21zm1 3h-5v-1c0-.589.411-1 1-1h3c.57 0 1 .462 1 1.075V24z"></path></g></svg>
-                            <a class="text-xl text-indigo-600" href="/ui">Explore APIs in API Explorer</a>
+                            <a class="text-xl text-rose-500" href="/ui">Explore APIs in API Explorer</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="mx-auto max-w-3xl px-6">
-            <div class="mt-12 py-16 absolute inset-y-0 right-0 w-1/2">
+        <div class="sm:mx-auto sm:max-w-3xl sm:px-6">
+            <div class="py-12 sm:relative sm:mt-12 sm:py-16 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
                 <div class="hidden sm:block">
-                    <div class="absolute inset-y-0 w-screen bg-gray-50 rounded-l-3xl left-80 right-0 w-full"></div>
-                    <svg class="absolute top-8 right-1/2 -mr-3 m-0 left-0" width="404" height="392" fill="none" viewBox="0 0 404 392">
+                    <div class="absolute inset-y-0 left-1/2 w-screen bg-gray-50 rounded-l-3xl lg:left-80 lg:right-0 lg:w-full"></div>
+                    <svg class="absolute top-8 right-1/2 -mr-3 lg:m-0 lg:left-0" width="404" height="392" fill="none" viewBox="0 0 404 392">
                         <defs>
                             <pattern id="837c3e70-6c3a-44e6-8854-cc48c737b659" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
                                 <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
@@ -90,9 +70,9 @@
                         <rect width="404" height="392" fill="url(#837c3e70-6c3a-44e6-8854-cc48c737b659)" />
                     </svg>
                 </div>
-                <div class="relative -mr-40 mx-auto max-w-3xl px-0 max-w-none h-full pl-12">
+                <div class="relative pl-4 -mr-40 sm:mx-auto sm:max-w-3xl sm:px-0 lg:max-w-none lg:h-full lg:pl-12">
                     <a href="/locode">
-                        <img class="w-full rounded-md shadow-xl ring-1 ring-black ring-opacity-5 h-full w-auto max-w-none"
+                        <img class="w-full rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-auto lg:max-w-none"
                              src="/screenshot.png" alt="">
                     </a>
                 </div>
