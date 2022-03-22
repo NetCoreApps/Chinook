@@ -28,9 +28,6 @@ namespace Chinook
                     context.Configuration.GetConnectionString("DefaultConnection")
                     ?? "chinook.sqlite",
                     SqliteDialect.Provider));
-            }).ConfigureAppHost(appHost =>
-            {
-                appHost.GetPlugin<SharpPagesFeature>()?.ScriptMethods.Add(new DbScriptsAsync());
             });
         }
     }

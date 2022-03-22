@@ -1,8 +1,7 @@
-namespace Chinook.ServiceModel
+namespace Chinook.ServiceModel;
+
+public static class Tags
 {
-    public static class Tags
-    {
-        public const string Media = nameof(Media);
-        public const string Store = nameof(Store);
-    }
+    public const string Media = nameof(Media);
+    public const string Store = nameof(Store);
 }
