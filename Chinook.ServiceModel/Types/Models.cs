@@ -50,9 +50,12 @@ public class Customers
     public string State { get; set; }
     public string Country { get; set; }
     public string PostalCode { get; set; }
+    [Format(FormatMethods.LinkPhone)]
     public string Phone { get; set; }
+    [Format(FormatMethods.LinkPhone)]
     public string Fax { get; set; }
     [Required]
+    [Format(FormatMethods.LinkEmail)]
     public string Email { get; set; }
 }
 
@@ -78,8 +81,11 @@ public class Employees
     public string State { get; set; }
     public string Country { get; set; }
     public string PostalCode { get; set; }
+    [Format(FormatMethods.LinkPhone)]
     public string Phone { get; set; }
+    [Format(FormatMethods.LinkPhone)]
     public string Fax { get; set; }
+    [Format(FormatMethods.LinkEmail, Options = "{subject:'Call Help Desk'}")]
     public string Email { get; set; }
 }
 
