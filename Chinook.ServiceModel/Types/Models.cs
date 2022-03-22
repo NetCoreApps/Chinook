@@ -158,7 +158,7 @@ public class Tracks
     public long TrackId { get; set; }
 
     [Required]
-    [Format(Method = "stylize", Options = "{cls:'text-green-600'}")]
+    [Format(Method = "stylize", Options = "{cls:'text-rose-500'}")]
     public string Name { get; set; }
 
     [Ref(Model = nameof(Albums), RefId = nameof(AlbumId), RefLabel = nameof(Albums.Title))]
