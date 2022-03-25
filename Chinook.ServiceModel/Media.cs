@@ -10,7 +10,9 @@ namespace Chinook.ServiceModel;
 public class CreateAlbums
     : IReturn<IdResponse>, IPost, ICreateDb<Albums>
 {
+    [ValidateNotEmpty]
     public string Title { get; set; }
+    [ValidateGreaterThan(0)]
     public long ArtistId { get; set; }
 }
 

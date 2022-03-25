@@ -11,6 +11,7 @@ public class Albums
     public long AlbumId { get; set; }
 
     [Required]
+    [Format(Method = "stylize", Options = "{cls:'text-rose-500'}")]
     public string Title { get; set; }
 
     [Ref(Model = nameof(Artists), RefId = nameof(ArtistId), RefLabel = nameof(Artists.Name))]
