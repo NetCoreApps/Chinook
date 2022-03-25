@@ -1,7 +1,7 @@
 using Chinook;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Hosting;
 using ServiceStack;
+
+Licensing.RegisterLicense("OSS BSD-3-Clause 2022 https://github.com/NetCoreApps/Chinook CkX/MACtdb/ZNeFHqQHZvkkm9O4u2Mu1L7jnEeZLd3Wxy7pgqp6EL/gvUexr+oTOxsu0QLIRHQe2UbWpyPZfogOsK62EFAWwRFejcxHOtFPw+hn2YQZuzUByBBR3emy8lFogzZclbaXCb0t2VAIuc33TsOfREjWL3tvWznf0VL8=");
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();

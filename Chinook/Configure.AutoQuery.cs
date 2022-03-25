@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Hosting;
 using ServiceStack;
 
 [assembly: HostingStartup(typeof(Chinook.ConfigureAutoQuery))]

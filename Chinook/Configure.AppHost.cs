@@ -1,6 +1,5 @@
 ﻿using Funq;
 using Chinook.ServiceInterface;
-using Microsoft.AspNetCore.Hosting;
 using ServiceStack;
 
 [assembly: HostingStartup(typeof(Chinook.AppHost))]
@@ -11,12 +10,10 @@ namespace Chinook
     {
         public AppHost() : base("Chinook", typeof(MyServices).Assembly) { }
 
-        public void Configure(IWebHostBuilder builder)
-        {
+        public void Configure(IWebHostBuilder builder) =>
             builder.ConfigureServices(services => {
                 // Configure ASP.NET Core IOC Dependencies
             });
-        }
 
         public override void Configure(Container container)
         {
