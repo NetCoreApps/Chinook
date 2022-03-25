@@ -108,6 +108,7 @@ App.components({
                         <input type="text" name="Title" :class="inputClass('Title')" placeholder="Album Title">
                         <p id="title-error" v-if="apiState.fieldError('Title')" v-html="apiState.fieldError('Title')"></p>
                     </div>
+                    
                     <!---: Using Input Lookup component -->
                     <div v-scope="Input({ field:apiState.field('ArtistId', f => {f.input.label='';f.input.placeholder='Select Artist'}), model, api:() => apiState.api })" class="mb-4"></div>
 
@@ -140,6 +141,7 @@ App.components({
 </div>
 </template>
 
+<!---: Reuse functionality with custom components -->
 <template id="submit-album-template">
 <button type="submit" class="inline-flex items-center p-3 border border-transparent rounded-full shadow-sm text-white bg-rose-600 hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-500">
     <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet" viewBox="0 0 48 48">
