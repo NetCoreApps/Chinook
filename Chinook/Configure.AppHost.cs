@@ -18,6 +18,7 @@ namespace Chinook
         public override void Configure(Container container)
         {
             SetConfig(new HostConfig {
+                // DebugMode = false,
                 UseSameSiteCookies = true
             });
             
