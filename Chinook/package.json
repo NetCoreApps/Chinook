@@ -1,5 +1,8 @@
 {
     "scripts": {
         "dtos": "x ts"
+    },
+    "dependencies": {
+        "@servicestack/ui": "^0.0.4"
     }
 }

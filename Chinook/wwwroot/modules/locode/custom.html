@@ -1,11 +1,16 @@
 <!---: Extend Locode App with Custom PetiteVue Components -->
 
 <script minify>
+import { map, inputClass } from "@servicestack/ui/shared"
+import { App, Forms, CreateComponentArgs, EditComponentArgs } from "@servicestack/ui/locode"
+
 App.components({
+    /** @param {CreateComponentArgs} args */
     NewAlbums({ store, routes, settings, state, save, done }) {
         return {
             $template: '#new-album-template',
             store, routes, settings,
+            /** @type {State} */
             get state() { return state && state() },
             get apiState() { return map(this.state, x => x.apiCreate) },
             get model() { return map(this.apiState, x => x.model) || {} },
@@ -23,7 +28,8 @@ App.components({
             }
         }
     },
-    
+
+    /** @param {EditComponentArgs} args */
     EditAlbums({ store, routes, settings, state, save, done }) {
         return {
             $template: '#edit-album-template',
