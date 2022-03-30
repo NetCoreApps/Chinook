@@ -73,7 +73,7 @@ public class Employees
     public string FirstName { get; set; }
 
     public string Title { get; set; }
-    [Ref(Model = nameof(Employees), RefId = nameof(ReportsTo), RefLabel = nameof(LastName))]
+    [Ref(Model = nameof(Employees), RefId = nameof(EmployeeId), RefLabel = nameof(LastName))]
     public long? ReportsTo { get; set; }
     public DateTime? BirthDate { get; set; }
     public DateTime? HireDate { get; set; }
