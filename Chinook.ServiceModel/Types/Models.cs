@@ -173,6 +173,6 @@ public class Tracks
     public long Milliseconds { get; set; }
     [Format(FormatMethods.Bytes)]
     public long? Bytes { get; set; }
-    [Format(FormatMethods.Currency)]
+    [IntlNumber(Currency = NumberCurrency.USD)]
     public decimal UnitPrice { get; set; }
 }
