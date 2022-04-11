@@ -2,8 +2,8 @@
 
 /** Custom [Format] method to style text with custom class
  * @param {*} val
- * @param {{cls:string}} opt */
-function stylize(val, opt) {
-    let cls = opt && opt.cls || 'text-green-600'
+ * @param {{cls:string}} [options] */
+function stylize(val, options) {
+    let cls = options && options.cls || 'text-green-600'
     return `<span class="${cls}">${val}</span>`
 }
