@@ -6,6 +6,8 @@ on:
     branches: [main,master]
     types:
       - completed
+  # Manual trigger for rollback to specific release or redeploy latest
+  workflow_dispatch:
 
 jobs:
   push_to_registry:
