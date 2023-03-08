@@ -1,7 +1,7 @@
 using Chinook;
 using ServiceStack;
 
-Licensing.RegisterLicense("OSS BSD-3-Clause 2022 https://github.com/NetCoreApps/Chinook CkX/MACtdb/ZNeFHqQHZvkkm9O4u2Mu1L7jnEeZLd3Wxy7pgqp6EL/gvUexr+oTOxsu0QLIRHQe2UbWpyPZfogOsK62EFAWwRFejcxHOtFPw+hn2YQZuzUByBBR3emy8lFogzZclbaXCb0t2VAIuc33TsOfREjWL3tvWznf0VL8=");
+ServiceStack.Licensing.RegisterLicense("OSS BSD-3-Clause 2023 https://github.com/NetCoreApps/Chinook DNRGgV4zhrOAPfM/c37Aqsnhl8T1637c0tHsjLnd0mHS/rNfrZ4ch2jTdRltNiZme7maFpk9rEZHCSce7VJU1bTVLLAirVF5ZXNhdvC+Tgg2Gt9N7tHVqLcA4kiuNts+ovb1PBhmFaWGAenWTbjDJKQFZspM5DNhzfCkLoHJhCc=");
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
