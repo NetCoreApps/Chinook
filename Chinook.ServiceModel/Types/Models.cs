@@ -163,10 +163,13 @@ public class Tracks
     public string Name { get; set; }
 
     [Ref(Model = nameof(Albums), RefId = nameof(AlbumId), RefLabel = nameof(Albums.Title))]
+    [References(typeof(Albums))]
     public long? AlbumId { get; set; }
-    [Ref(Model = nameof(MediaTypes), RefId = nameof(MediaTypeId), RefLabel = nameof(MediaTypes.Name))]
+    [Ref(Model = nameof(MediaTypes), RefId = nameof(MediaTypeId), RefLabel = nameof(Name))]
+    [References(typeof(MediaTypes))]
     public long MediaTypeId { get; set; }
-    [Ref(Model = nameof(Genres), RefId = nameof(Tracks.GenreId), RefLabel = nameof(Genres.Name))]
+    [Ref(Model = nameof(Genres), RefId = nameof(GenreId), RefLabel = nameof(Name))]
+    [References(typeof(Genres))]
     public long? GenreId { get; set; }
     public string Composer { get; set; }
     [IntlDateTime(Minute = DatePart.Digits2, Second = DatePart.Digits2, FractionalSecondDigits = 3)]
@@ -175,4 +178,13 @@ public class Tracks
     public long? Bytes { get; set; }
     [IntlNumber(Currency = NumberCurrency.USD)]
     public decimal UnitPrice { get; set; }
+    
+    [Reference]
+    public Albums Album { get; set; }
+    
+    [Reference]
+    public MediaTypes MediaType { get; set; }
+    
+    [Reference]
+    public Genres Genre { get; set; }
 }
