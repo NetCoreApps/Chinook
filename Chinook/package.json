@@ -1,6 +1,9 @@
 {
     "scripts": {
-        "dtos": "x ts"
+        "dtos": "x mjs",
+        "build": "npm run ui:build",
+        "ui:dev": "npx tailwindcss -i ./tailwind.input.css -o ./wwwroot/css/app.css --watch",
+        "ui:build": "npx tailwindcss -i ./tailwind.input.css -o ./wwwroot/css/app.css --minify"
     },
     "dependencies": {
         "@servicestack/ui": "^0.0.8"

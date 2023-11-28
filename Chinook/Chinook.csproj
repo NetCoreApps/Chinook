@@ -1,34 +1,35 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <PublishProfile>DefaultContainer</PublishProfile>
   </PropertyGroup>
-
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Using Include="Chinook" />
+    <Using Include="ServiceStack" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ServiceStack" Version="6.*" />
-    <PackageReference Include="ServiceStack.OrmLite.Sqlite" Version="6.*" />
-    <PackageReference Include="ServiceStack.Server" Version="6.*" />
+    <PackageReference Include="ServiceStack" Version="8.*" />
+    <PackageReference Include="ServiceStack.Server" Version="8.*" />
+    <PackageReference Include="ServiceStack.OrmLite.Sqlite.Data" Version="8.*" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Chinook.ServiceInterface\Chinook.ServiceInterface.csproj" />
     <ProjectReference Include="..\Chinook.ServiceModel\Chinook.ServiceModel.csproj" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <None Remove="chinook.sqlite" />
-    <Content Include="chinook.sqlite">
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="App_Data\chinook.sqlite">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="wwwroot\modules\shared\custom-end.html" />
   </ItemGroup>
 
 </Project>

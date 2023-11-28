@@ -21,7 +21,7 @@ namespace Chinook
             {
                 services.AddSingleton<IDbConnectionFactory>(new OrmLiteConnectionFactory(
                     context.Configuration.GetConnectionString("DefaultConnection")
-                    ?? "chinook.sqlite",
+                    ?? "App_Data/chinook.sqlite",
                     SqliteDialect.Provider));
             });
         }

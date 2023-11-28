@@ -27,7 +27,7 @@ namespace Chinook
 
             Plugins.Add(new CorsFeature(new[] {
                     "http://localhost:3000",
-                    "https://docs-vitepress.servicestack.net"
+                    "https://docs.servicestack.net"
                 },
                 allowCredentials: true,
                 allowedHeaders: "Content-Type, Allow, Authorization"
