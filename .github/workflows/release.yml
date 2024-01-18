@@ -133,6 +133,18 @@ jobs:
           strip_components: 2
           source: "./.deploy/docker-compose.yml,./.deploy/.env"
           target: "~/.deploy/${{ github.event.repository.name }}/"
+            
+      # Copy only the docker-compose.yml to remote server home folder
+      - name: copy chinook DB
+        uses: appleboy/scp-action@v0.1.3
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USERNAME }}
+          port: 22
+          key: ${{ secrets.DEPLOY_KEY }}
+          strip_components: 2
+          source: "./Chinook/App_Data/chinook.sqlite"
+          target: "~/.deploy/${{ github.event.repository.name }}/App_Data/"
       
       - name: Run remote db migrations
         uses: appleboy/ssh-action@v0.1.5
@@ -152,7 +164,7 @@ jobs:
             docker compose pull
             export APP_ID=$(docker compose run --entrypoint "id -u" --rm app)
             docker compose run --entrypoint "chown $APP_ID:$APP_ID /app/App_Data" --user root --rm app
-            docker compose up app-migration --exit-code-from app-migration
+            
 
       # Deploy Docker image with your application using `docker compose up` remotely
       - name: remote docker-compose up via ssh
