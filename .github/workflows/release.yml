@@ -142,7 +142,7 @@ jobs:
           username: ${{ secrets.DEPLOY_USERNAME }}
           port: 22
           key: ${{ secrets.DEPLOY_KEY }}
-          strip_components: 2
+          strip_components: 3
           source: "./Chinook/App_Data/chinook.sqlite"
           target: "~/.deploy/${{ github.event.repository.name }}/App_Data/"
       
