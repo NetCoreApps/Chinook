@@ -8,9 +8,9 @@ namespace Chinook
     {
         public void Configure(IWebHostBuilder builder)
         {
-            builder.ConfigureAppHost(appHost =>
+            builder.ConfigureServices(services =>
             {
-                appHost.Plugins.Add(new AutoQueryFeature {
+                services.AddPlugin(new AutoQueryFeature {
                     MaxLimit = 1000,
                     IncludeTotal = true,
                     // Enable AutoGen to generate APIs and Models for RDBMS:

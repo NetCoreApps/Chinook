@@ -13,6 +13,13 @@ namespace Chinook
         public void Configure(IWebHostBuilder builder) =>
             builder.ConfigureServices(services => {
                 // Configure ASP.NET Core IOC Dependencies
+                services.AddPlugin(new CorsFeature(new[] {
+                        "http://localhost:3000",
+                        "https://docs.servicestack.net"
+                    },
+                    allowCredentials: true,
+                    allowedHeaders: "Content-Type, Allow, Authorization"
+                ));
             });
 
         public override void Configure(Container container)
@@ -24,14 +31,6 @@ namespace Chinook
             
             ConfigurePlugin<UiFeature>(feature => 
                 feature.Info.BrandIcon = new ImageInfo { Uri = "/logo.svg", Cls = "w-8 h-8 mr-2" });
-
-            Plugins.Add(new CorsFeature(new[] {
-                    "http://localhost:3000",
-                    "https://docs.servicestack.net"
-                },
-                allowCredentials: true,
-                allowedHeaders: "Content-Type, Allow, Authorization"
-            ));
         }
     }
 }
