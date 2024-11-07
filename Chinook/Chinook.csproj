@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+      <ContainerLabel Include="service" Value="chinook" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.*" />
     <PackageReference Include="ServiceStack" Version="8.*" />
     <PackageReference Include="ServiceStack.AspNetCore.OpenApi" Version="8.*" />
