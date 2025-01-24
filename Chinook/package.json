@@ -2,8 +2,8 @@
     "scripts": {
         "dtos": "x mjs",
         "build": "npm run ui:build",
-        "ui:dev": "npx tailwindcss -i ./tailwind.input.css -o ./wwwroot/css/app.css --watch",
-        "ui:build": "npx tailwindcss -i ./tailwind.input.css -o ./wwwroot/css/app.css --minify"
+        "ui:dev": "npx tailwindcss@v3 -i ./tailwind.input.css -o ./wwwroot/css/app.css --watch",
+        "ui:build": "npx tailwindcss@v3 -i ./tailwind.input.css -o ./wwwroot/css/app.css --minify"
     },
     "dependencies": {
         "@servicestack/ui": "^0.0.8"
